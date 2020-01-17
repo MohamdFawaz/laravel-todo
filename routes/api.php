@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Task routes...
+Route::group(['prefix' => 'task', 'namespace' => 'api'],function (){
+    Route::get('/', 'TaskController@index');
+    Route::post('/', 'TaskController@store');
+    Route::put('/{id}', 'TaskController@update');
+    Route::put('/toggle-completed/{id}', 'TaskController@toggleCompleted');
+    Route::delete('/{id}', 'TaskController@destroy');
 });
