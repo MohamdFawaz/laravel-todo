@@ -18,9 +18,13 @@ class TaskController extends APIController
      *
      * @return JsonResponse
      */
-    public function index()
+    public function index($completed = 'not completed')
     {
-        $tasks = Task::orderByDesc('created_at')->get();
+        if ($completed == 'completed'){
+            $tasks = Task::completed()->orderByDesc('created_at')->get();
+        }else{
+            $tasks = Task::notCompleted()->orderByDesc('created_at')->get();
+        }
         return $this->respond(TaskResource::collection($tasks));
     }
 

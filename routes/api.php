@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 // Task routes...
 Route::group(['prefix' => 'task', 'namespace' => 'api'],function (){
-    Route::get('/', 'TaskController@index');
+    Route::get('/{completed}', 'TaskController@index');
     Route::post('/', 'TaskController@store');
     Route::put('/{id}', 'TaskController@update');
     Route::put('/toggle-completed/{id}', 'TaskController@toggleCompleted');

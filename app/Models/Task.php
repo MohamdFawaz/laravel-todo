@@ -13,4 +13,12 @@ class Task extends Model
         $this->is_completed = !$this->is_completed;
         return $this;
     }
+
+    public function scopeCompleted($query) {
+        return $query->where('is_completed',true);
+    }
+
+    public function scopeNotCompleted($query) {
+        return $query->where('is_completed',false);
+    }
 }

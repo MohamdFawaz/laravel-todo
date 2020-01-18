@@ -18,7 +18,7 @@ class TaskResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'due_date' => $this->due_date,
-            'is_completed' => $this->is_completed
+            'is_completed' => (boolean)$this->is_completed
         ];
     }
 }
