@@ -21,9 +21,9 @@ class TaskController extends APIController
     public function index($completed = 'not completed')
     {
         if ($completed == 'completed'){
-            $tasks = Task::completed()->orderByDesc('created_at')->get();
+            $tasks = Task::completed()->oldest('due_date')->get();
         }else{
-            $tasks = Task::notCompleted()->orderByDesc('created_at')->get();
+            $tasks = Task::notCompleted()->oldest('due_date')->get();
         }
         return $this->respond(TaskResource::collection($tasks));
     }
